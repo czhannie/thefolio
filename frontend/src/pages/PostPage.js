@@ -97,7 +97,7 @@ function PostPage() {
 
         {post.image && (
           <div style={{ textAlign: "center", marginBottom: "30px" }}>
-            <img src={`http://localhost:5000/uploads/${post.image}`} alt={post.title} className="hobby-img" style={{ maxWidth: "100%" }} />
+            <img src={`${process.env.REACT_APP_API_URL?.replace('/api','')}/uploads/${post.image}`} alt={post.title} className="hobby-img" style={{ maxWidth: "100%" }} />
           </div>
         )}
 
