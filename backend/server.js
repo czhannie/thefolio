@@ -12,7 +12,13 @@ const adminRoutes = require('./routes/admin.routes');
 const app = express();
 connectDB(); 
 
-app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+app.use(cors({
+  origin: [
+    'http://localhost:3000',
+    'https://thefolio-api-0vvp.onrender.com', // 
+  ],
+  credentials: true,
+}));
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
