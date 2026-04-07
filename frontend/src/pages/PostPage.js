@@ -83,7 +83,7 @@ function PostPage() {
         <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "20px", color: "var(--primary-color)" }}>
           {post.author?.profilePic ? (
             <img 
-              src={`http://localhost:5000/uploads/${post.author.profilePic}`} 
+              src={`${process.env.REACT_APP_API_URL?.replace('/api','')}/uploads/${post.author.profilePic}`} 
               alt={post.author.name} 
               style={{ width: "40px", height: "40px", borderRadius: "50%", objectFit: "cover" }} 
             />
