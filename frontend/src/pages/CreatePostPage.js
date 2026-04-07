@@ -64,7 +64,7 @@ const CreatePostPage = () => {
           />
         </div>
         
-        {user?.role === 'admin' && (
+        
           <div>
             <label htmlFor="image">Upload Cover Image (Admin only): </label>
             <input 
@@ -75,7 +75,7 @@ const CreatePostPage = () => {
               style={{ background: "transparent", border: "none" }}
             />
           </div>
-        )}
+        
 
         <button type='submit' className="btn" style={{ marginTop: "20px" }}>Publish Post</button>
       </form>
