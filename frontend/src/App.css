@@ -71,6 +71,9 @@ header {
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 2px;
+  /* NEW RULES BELOW */
+  white-space: nowrap; 
+  flex-shrink: 0;      
 }
 
 nav ul {
