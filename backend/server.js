@@ -15,7 +15,7 @@ connectDB();
 app.use(cors({
   origin: [
     'http://localhost:3000',
-    'https://thefolio-vhhz.vercel.app' 
+    'https://thefolio-nine.vercel.app' // <-- Your newly updated Vercel URL
   ],
   credentials: true,
 }));
