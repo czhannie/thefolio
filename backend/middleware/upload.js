@@ -1,32 +1,27 @@
 const multer = require('multer');
-const path = require('path');
-const fs = require('fs');
+const cloudinary = require('cloudinary').v2;
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
 
-if (!fs.existsSync('uploads')) {
-  fs.mkdirSync('uploads');
-}
-
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, 'uploads/'),
-  filename: (req, file, cb) => {
-    const unique = Date.now() + '-' + Math.round(Math.random() * 1e9);
-    cb(null, unique + path.extname(file.originalname));
-  }
+// 1. Log into Cloudinary using your .env keys
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-const fileFilter = (req, file, cb) => {
-  const allowedTypes = /jpeg|jpg|png|gif|webp/;
-  const ext = allowedTypes.test(path.extname(file.originalname).toLowerCase());
-  const mime = allowedTypes.test(file.mimetype);
+// 2. Set up the Cloudinary storage engine
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'thefolio_uploads', 
+    allowed_formats: ['jpg', 'jpeg', 'png', 'gif', 'webp'], // This replaces your old fileFilter!
+  },
+});
 
-  if (ext && mime) return cb(null, true);
-  cb(new Error('Only image files are allowed (jpg, png, gif, webp)'));
-};
-
+// 3. Initialize Multer with the new storage and your existing limits
 const upload = multer({
-  storage,
-  fileFilter,
-  limits: { fileSize: 5 * 1024 * 1024 }, 
+  storage: storage,
+  limits: { fileSize: 5 * 1024 * 1024 }, // Kept your 5MB limit
 });
 
 module.exports = upload;
