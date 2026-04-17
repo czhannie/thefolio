@@ -37,7 +37,7 @@ function ProfilePage() {
     } catch (err) { setMsg(err.response?.data?.message || 'Error'); }
   };
 
-  const picSrc = user?.profilePic ? `http://localhost:5000/uploads/${user.profilePic}` : '/assets/profile.jpg';
+  const picSrc = user?.profilePic ? `${process.env.REACT_APP_API_URL?.replace('/api','')}/uploads/${user.profilePic}` : '/assets/profile.jpg';
 
   return (
     <main>
