@@ -43,7 +43,7 @@ router.put('/:id', protect, memberOrAdmin, upload.single('image'), async (req, r
 
     if (req.body.title) post.title = req.body.title;
     if (req.body.body) post.body = req.body.body;
-    if (req.file) post.image = req.file.filename;
+    if (req.file) post.image = req.file.path;
 
     await post.save();
     res.json(post);
