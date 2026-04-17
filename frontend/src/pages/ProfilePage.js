@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import API from '../api/axios';
 
@@ -11,6 +11,11 @@ function ProfilePage() {
   const [curPw, setCurPw] = useState('');
   const [newPw, setNewPw] = useState('');
   const [msg, setMsg] = useState('');
+
+  // THE TRACKER: This will print your user data to the browser console!
+  useEffect(() => {
+    console.log("React is seeing this user data:", user);
+  }, [user]);
 
   const handleProfile = async (e) => {
     e.preventDefault(); 
@@ -37,7 +42,9 @@ function ProfilePage() {
     } catch (err) { setMsg(err.response?.data?.message || 'Error'); }
   };
 
-  const picSrc = user?.profilePic ? `${process.env.REACT_APP_API_URL?.replace('/api','')}/uploads/${user.profilePic}` : '/assets/profile.jpg';
+  const picSrc = user?.profilePic 
+  ? (user.profilePic.startsWith('http') ? user.profilePic : `${process.env.REACT_APP_API_URL?.replace('/api','')}/uploads/${user.profilePic}`) 
+  : '/assets/profile.jpg';
 
   return (
     <main>
@@ -65,10 +72,12 @@ function ProfilePage() {
       <form className="styled-form" onSubmit={handlePassword}>
         <h3>Change Password</h3>
         <label>Current Password:</label>
-        <input type='password' value={curPw} onChange={e => setCurPw(e.target.value)} required />
+        {/* Added autoComplete here */}
+        <input type='password' value={curPw} onChange={e => setCurPw(e.target.value)} required autoComplete="current-password" />
         
         <label>New Password (min 6 chars):</label>
-        <input type='password' value={newPw} onChange={e => setNewPw(e.target.value)} required minLength={6} />
+        {/* Added autoComplete here */}
+        <input type='password' value={newPw} onChange={e => setNewPw(e.target.value)} required minLength={6} autoComplete="new-password" />
         
         <button type='submit' className="btn">Update Password</button>
       </form>
