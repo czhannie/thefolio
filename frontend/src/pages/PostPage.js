@@ -83,10 +83,10 @@ function PostPage() {
         <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "20px", color: "var(--primary-color)" }}>
           {post.author?.profilePic ? (
             <img 
-              src={`${process.env.REACT_APP_API_URL?.replace('/api','')}/uploads/${post.author.profilePic}`} 
-              alt={post.author.name} 
-              style={{ width: "40px", height: "40px", borderRadius: "50%", objectFit: "cover" }} 
-            />
+                src={post.author.profilePic.startsWith('http') ? post.author.profilePic : `${process.env.REACT_APP_API_URL?.replace('/api','')}/uploads/${post.author.profilePic}`} 
+               alt={post.author.name} 
+               style={{ width: "40px", height: "40px", borderRadius: "50%", objectFit: "cover" }} 
+              />
           ) : (
             <div style={{ width: "40px", height: "40px", borderRadius: "50%", backgroundColor: "var(--bg-soft)" }}></div>
           )}
@@ -97,7 +97,7 @@ function PostPage() {
 
         {post.image && (
           <div style={{ textAlign: "center", marginBottom: "30px" }}>
-            <img src={`${process.env.REACT_APP_API_URL?.replace('/api','')}/uploads/${post.image}`} alt={post.title} className="hobby-img" style={{ maxWidth: "100%" }} />
+            <img src={post.image.startsWith('http') ? post.image : `${process.env.REACT_APP_API_URL?.replace('/api','')}/uploads/${post.image}`} alt={post.title} className="hobby-img" style={{ maxWidth: "100%" }} />
           </div>
         )}
 
