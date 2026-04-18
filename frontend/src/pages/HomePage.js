@@ -121,7 +121,7 @@ function HomePage() {
           </div>
         </section>
 
-        {/* PHASE 2: STORY FEED SECTION */}
+        {/* PHASE 2: NEW STORY GRID */}
         <section className="content-section" style={{ marginTop: "60px" }}>
           <h2 style={{ textAlign: "center", marginBottom: "40px", borderTop: "2px solid var(--bg-soft)", paddingTop: "40px" }}>
             Latest Stories
@@ -130,6 +130,7 @@ function HomePage() {
           {loading ? <p style={{textAlign: "center"}}>Loading posts...</p> : null}
           {posts.length === 0 && !loading && <p style={{textAlign: "center"}}>No posts yet. Be the first to write one!</p>}
           
+          {/* THE GRID CONTAINER */}
           <div className='posts-grid' style={{ display: 'flex', gap: '30px', flexWrap: 'wrap', justifyContent: 'center' }}>
             {posts.map(post => (
               <div key={post._id} className="story-post-card">
@@ -186,7 +187,7 @@ function HomePage() {
 
       {/* RESTORED EXACT PHASE 1 FOOTER */}
       <footer>
-        <p>&copy; 2026 Maerose Boadilla. All Rights Reserved.</p>
+        <p>&copy; 2026 Maerose Joscel Czarinah Boadilla. All Rights Reserved.</p>
         <p>Contact: student@dmmmsu.edu.ph</p>
       </footer>
     </>
