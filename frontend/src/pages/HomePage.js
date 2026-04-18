@@ -121,10 +121,10 @@ function HomePage() {
           </div>
         </section>
 
-        {/* PHASE 2: NEW BLOG POSTS SECTION (Aesthetic Blog Cards) */}
+        {/* PHASE 2: STORY FEED SECTION */}
         <section className="content-section" style={{ marginTop: "60px" }}>
-          <h2 style={{ textAlign: "center", marginBottom: "30px", borderTop: "2px solid var(--bg-soft)", paddingTop: "40px" }}>
-            Latest Blog Posts
+          <h2 style={{ textAlign: "center", marginBottom: "40px", borderTop: "2px solid var(--bg-soft)", paddingTop: "40px" }}>
+            Latest Stories
           </h2>
           
           {loading ? <p style={{textAlign: "center"}}>Loading posts...</p> : null}
@@ -132,36 +132,46 @@ function HomePage() {
           
           <div className='posts-grid' style={{ display: 'flex', gap: '30px', flexWrap: 'wrap', justifyContent: 'center' }}>
             {posts.map(post => (
-              <div key={post._id} className="blog-card">
+              <div key={post._id} className="story-post-card">
                 
-                {/* Edge-to-edge image with cinematic hover zoom */}
+                {/* 1. The Post Header (Avatar + Name + Date) */}
+                <div className="story-post-header">
+                  {post.author?.profilePic ? (
+                    <img 
+                      src={post.author.profilePic.startsWith('http') ? post.author.profilePic : `${process.env.REACT_APP_API_URL?.replace('/api','')}/uploads/${post.author.profilePic}`} 
+                      alt={post.author.name} 
+                      className="story-post-avatar"
+                    />
+                  ) : (
+                    <div className="story-post-avatar" style={{ backgroundColor: 'var(--bg-soft)' }}></div>
+                  )}
+                  <div className="story-post-meta">
+                    <p className="story-post-author">{post.author?.name || 'Anonymous'}</p>
+                    <p className="story-post-date">{new Date(post.createdAt).toLocaleDateString()}</p>
+                  </div>
+                </div>
+
+                {/* 2. The Framed Image */}
                 {post.image && (
-                  <div className="blog-card-img-wrapper">
+                  <div className="story-post-img-wrapper">
                     <img 
                       src={post.image.startsWith('http') ? post.image : `${process.env.REACT_APP_API_URL?.replace('/api','')}/uploads/${post.image}`} 
                       alt={post.title} 
-                      className="blog-card-img"
+                      className="story-post-img"
                     />
                   </div>
                 )}
                 
-                {/* Card Text Content */}
-                <div className="blog-card-content">
-                  
-                  {/* Cleaned up Title Link (Now uses your CSS styling) */}
-                  <h3 className="blog-card-title">
+                {/* 3. The Content & Link */}
+                <div className="story-post-content">
+                  <h3 className="story-post-title">
                     <Link to={`/posts/${post._id}`}>
                       {post.title}
                     </Link>
                   </h3>
                   
-                  <p className="blog-card-excerpt">{post.body.substring(0, 100)}...</p>
+                  <p className="story-post-excerpt">{post.body.substring(0, 100)}...</p>
                   
-                  <small style={{ color: 'var(--primary-color)', fontWeight: 'bold', display: 'block', marginBottom: '20px' }}>
-                    By {post.author?.name}
-                  </small>
-
-                  {/* THE ELEGANT TEXT LINK */}
                   <Link to={`/posts/${post._id}`} className="read-more-link">
                     Read More &rarr;
                   </Link>
@@ -176,7 +186,7 @@ function HomePage() {
 
       {/* RESTORED EXACT PHASE 1 FOOTER */}
       <footer>
-        <p>&copy; 2026 Maerose Joscel Czarinah Boadilla. All Rights Reserved.</p>
+        <p>&copy; 2026 Maerose Boadilla. All Rights Reserved.</p>
         <p>Contact: student@dmmmsu.edu.ph</p>
       </footer>
     </>
