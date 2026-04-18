@@ -135,10 +135,10 @@ function HomePage() {
               <div key={post._id} className='pillar-card' style={{maxWidth: '300px', textAlign: 'left', display: 'flex', flexDirection: 'column'}}>
                 {post.image && (
                   <img 
-  src={post.image.startsWith('http') ? post.image : `${process.env.REACT_APP_API_URL?.replace('/api','')}/uploads/${post.image}`} 
-  alt={post.title} 
-  style={{width: '100%', borderRadius: '10px', marginBottom: '15px'}} 
-/>
+                    src={post.image.startsWith('http') ? post.image : `${process.env.REACT_APP_API_URL?.replace('/api','')}/uploads/${post.image}`} 
+                    alt={post.title} 
+                    style={{width: '100%', borderRadius: '10px', marginBottom: '15px'}} 
+                  />
                 )}
                 <h3 style={{marginTop: '0', borderBottom: 'none'}}>
                   <Link to={`/posts/${post._id}`} style={{color: 'var(--text-main)', textDecoration: 'none'}}>
@@ -146,7 +146,17 @@ function HomePage() {
                   </Link>
                 </h3>
                 <p style={{flexGrow: 1}}>{post.body.substring(0, 100)}...</p>
-                <small style={{color: 'var(--primary-color)', fontWeight: 'bold', marginTop: '10px'}}>By {post.author?.name}</small>
+                
+                {/* Wrapped Author tag and added margin so button breathes */}
+                <small style={{color: 'var(--primary-color)', fontWeight: 'bold', marginTop: '10px', display: 'block', marginBottom: '20px'}}>
+                  By {post.author?.name}
+                </small>
+
+                {/* THE NEW BUTTON */}
+                <Link to={`/posts/${post._id}`} className="btn" style={{ textDecoration: 'none', textAlign: 'center', display: 'block' }}>
+                  Read More
+                </Link>
+                
               </div>
             ))}
           </div>
