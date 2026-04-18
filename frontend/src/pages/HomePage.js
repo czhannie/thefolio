@@ -173,10 +173,10 @@ function HomePage() {
                   
                   <p className="story-post-excerpt">{post.body.substring(0, 100)}...</p>
                   
-                  {/* THE ELEGANT TEXT LINK */}
-<Link to={`/posts/${post._id}`} className="read-more-link">
-  Read More <span className="read-more-arrow">&rarr;</span>
-</Link>
+                 {/* THE MINIMALIST TEXT LINK */}
+            <Link to={`/posts/${post._id}`} className="read-more-link">
+             Read More
+            </Link>
                 </div>
 
               </div>

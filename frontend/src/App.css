@@ -794,35 +794,21 @@ button.replay-btn:hover {
   transform: translateY(-2px);
 }
 
-/* --- EDITORIAL READ MORE LINK (No Underline) --- */
+/* --- MINIMALIST ELEGANT READ MORE --- */
 .read-more-link {
   color: var(--primary-color);
-  font-family: var(--font-heading);
+  font-family: var(--font-main); /* Using your standard readable body font */
   font-size: 0.95rem;
-  font-weight: bold;
-  font-style: italic; 
+  font-weight: 600; /* Just a soft bold to make it legible */
   text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+  display: inline-block;
   margin-top: auto;
-  letter-spacing: 1px; /* Standard elegant spacing */
-  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); /* Silky smooth timing */
+  transition: color 0.3s ease; /* A simple, smooth color fade */
 }
 
-/* The text turns gold and gently breathes outward */
+/* It just quietly glows gold on hover */
 .read-more-link:hover {
   color: var(--accent-gold);
-  letter-spacing: 2.5px; 
-}
-
-/* The arrow's graceful glide */
-.read-more-arrow {
-  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.read-more-link:hover .read-more-arrow {
-  transform: translateX(8px); /* A slightly longer, elegant reach */
 }
 
 
