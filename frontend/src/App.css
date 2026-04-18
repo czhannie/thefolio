@@ -794,50 +794,35 @@ button.replay-btn:hover {
   transform: translateY(-2px);
 }
 
-/* --- ULTRA-ELEGANT READ MORE LINK --- */
+/* --- EDITORIAL READ MORE LINK (No Underline) --- */
 .read-more-link {
   color: var(--primary-color);
   font-family: var(--font-heading);
   font-size: 0.95rem;
   font-weight: bold;
-  font-style: italic; /* Adds that classic storytelling feel */
+  font-style: italic; 
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   gap: 6px;
   margin-top: auto;
-  position: relative;
-  padding-bottom: 4px;
-  transition: color 0.4s ease;
+  letter-spacing: 1px; /* Standard elegant spacing */
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); /* Silky smooth timing */
 }
 
-/* The sophisticated gold underline that draws itself */
-.read-more-link::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 1px;
-  bottom: 0;
-  left: 0;
-  background-color: var(--accent-gold);
-  transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Silky smooth animation */
-}
-
+/* The text turns gold and gently breathes outward */
 .read-more-link:hover {
   color: var(--accent-gold);
+  letter-spacing: 2.5px; 
 }
 
-.read-more-link:hover::after {
-  width: 100%; /* Expands the line underneath the text */
-}
-
-/* A gentle, refined glide for the arrow */
+/* The arrow's graceful glide */
 .read-more-arrow {
-  transition: transform 0.4s ease;
+  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .read-more-link:hover .read-more-arrow {
-  transform: translateX(5px);
+  transform: translateX(8px); /* A slightly longer, elegant reach */
 }
 
 
