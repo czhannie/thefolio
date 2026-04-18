@@ -588,7 +588,7 @@ input[type="radio"] {
 
 /* --- NAVIGATION FONT SIZE UPDATE --- */
 nav ul li a {
-  font-size: 1.1rem;
+  font-size: 0.9rem; /* Perfect elegant size */
 }
 
 /* --- THEME TOGGLE BUTTON STYLING --- */
