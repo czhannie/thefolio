@@ -131,7 +131,7 @@ function HomePage() {
           {posts.length === 0 && !loading && <p style={{textAlign: "center"}}>No posts yet. Be the first to write one!</p>}
           
           {/* THE GRID CONTAINER */}
-          <div className='posts-grid' style={{ display: 'flex', gap: '30px', flexWrap: 'wrap', justifyContent: 'center' }}>
+          <div className="posts-scroller">
             {posts.map(post => (
               <div key={post._id} className="story-post-card">
                 
