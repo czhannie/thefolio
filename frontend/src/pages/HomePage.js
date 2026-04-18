@@ -121,7 +121,7 @@ function HomePage() {
           </div>
         </section>
 
-        {/* PHASE 2: NEW BLOG POSTS SECTION (Added safely below your content) */}
+        {/* PHASE 2: NEW BLOG POSTS SECTION (Aesthetic Blog Cards) */}
         <section className="content-section" style={{ marginTop: "60px" }}>
           <h2 style={{ textAlign: "center", marginBottom: "30px", borderTop: "2px solid var(--bg-soft)", paddingTop: "40px" }}>
             Latest Blog Posts
@@ -130,33 +130,41 @@ function HomePage() {
           {loading ? <p style={{textAlign: "center"}}>Loading posts...</p> : null}
           {posts.length === 0 && !loading && <p style={{textAlign: "center"}}>No posts yet. Be the first to write one!</p>}
           
-          <div className='posts-grid' style={{display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center'}}>
+          <div className='posts-grid' style={{ display: 'flex', gap: '30px', flexWrap: 'wrap', justifyContent: 'center' }}>
             {posts.map(post => (
-              <div key={post._id} className='pillar-card' style={{maxWidth: '300px', textAlign: 'left', display: 'flex', flexDirection: 'column'}}>
+              <div key={post._id} className="blog-card">
+                
+                {/* Edge-to-edge image with cinematic hover zoom */}
                 {post.image && (
-                  <img 
-                    src={post.image.startsWith('http') ? post.image : `${process.env.REACT_APP_API_URL?.replace('/api','')}/uploads/${post.image}`} 
-                    alt={post.title} 
-                    style={{width: '100%', borderRadius: '10px', marginBottom: '15px'}} 
-                  />
+                  <div className="blog-card-img-wrapper">
+                    <img 
+                      src={post.image.startsWith('http') ? post.image : `${process.env.REACT_APP_API_URL?.replace('/api','')}/uploads/${post.image}`} 
+                      alt={post.title} 
+                      className="blog-card-img"
+                    />
+                  </div>
                 )}
-                <h3 style={{marginTop: '0', borderBottom: 'none'}}>
-                  <Link to={`/posts/${post._id}`} style={{color: 'var(--text-main)', textDecoration: 'none'}}>
-                    {post.title}
-                  </Link>
-                </h3>
-                <p style={{flexGrow: 1}}>{post.body.substring(0, 100)}...</p>
                 
-                {/* Wrapped Author tag and added margin so button breathes */}
-                <small style={{color: 'var(--primary-color)', fontWeight: 'bold', marginTop: '10px', display: 'block', marginBottom: '20px'}}>
-                  By {post.author?.name}
-                </small>
+                {/* Card Text Content */}
+                <div className="blog-card-content">
+                  <h3 className="blog-card-title">
+                    <Link to={`/posts/${post._id}`} style={{ color: 'var(--text-main)', textDecoration: 'none' }}>
+                      {post.title}
+                    </Link>
+                  </h3>
+                  
+                  <p className="blog-card-excerpt">{post.body.substring(0, 100)}...</p>
+                  
+                  <small style={{ color: 'var(--primary-color)', fontWeight: 'bold', display: 'block', marginBottom: '20px' }}>
+                    By {post.author?.name}
+                  </small>
 
-               {/* THE ELEGANT TEXT LINK */}
-<Link to={`/posts/${post._id}`} className="read-more-link">
-  Read More &rarr;
-</Link>
-                
+                  {/* THE ELEGANT TEXT LINK */}
+                  <Link to={`/posts/${post._id}`} className="read-more-link">
+                    Read More &rarr;
+                  </Link>
+                </div>
+
               </div>
             ))}
           </div>
