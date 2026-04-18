@@ -833,6 +833,8 @@ button.replay-btn:hover {
   display: flex;
   flex-direction: column;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
+  flex: 0 0 auto; 
+  scroll-snap-align: center;
 }
 
 .story-post-card:hover {
@@ -930,4 +932,34 @@ button.replay-btn:hover {
   opacity: 0.85;
   margin-bottom: 15px;
   flex-grow: 1; /* Pushes the 'Read More' link neatly to the bottom */
+}
+
+/* --- ELEGANT HORIZONTAL SCROLLER --- */
+.posts-scroller {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  padding: 15px 10px 40px 10px; /* Gives room for shadows and the scrollbar */
+  scroll-snap-type: x mandatory; /* The magic that makes it snap into place */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* Butter-smooth scrolling on mobile */
+  
+  /* Firefox custom scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-gold) var(--bg-soft);
+}
+
+/* Chrome/Safari elegant custom scrollbar */
+.posts-scroller::-webkit-scrollbar {
+  height: 6px; /* A delicate, thin line */
+}
+
+.posts-scroller::-webkit-scrollbar-track {
+  background: var(--bg-soft);
+  border-radius: 10px;
+}
+
+.posts-scroller::-webkit-scrollbar-thumb {
+  background-color: var(--accent-gold);
+  border-radius: 10px;
 }
