@@ -794,21 +794,30 @@ button.replay-btn:hover {
   transform: translateY(-2px);
 }
 
-/* --- MINIMALIST ELEGANT READ MORE --- */
+/* --- ELEGANT READ MORE BUTTON --- */
 .read-more-link {
-  color: var(--primary-color);
-  font-family: var(--font-main); /* Using your standard readable body font */
-  font-size: 0.95rem;
-  font-weight: 600; /* Just a soft bold to make it legible */
-  text-decoration: none;
   display: inline-block;
   margin-top: auto;
-  transition: color 0.3s ease; /* A simple, smooth color fade */
+  align-self: flex-start; /* Keeps it neatly aligned to the left */
+  padding: 8px 24px;
+  border: 1px solid var(--primary-color);
+  border-radius: 30px; /* Perfect elegant pill shape */
+  background-color: transparent;
+  color: var(--primary-color);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px; /* Wide, editorial spacing */
+  text-decoration: none;
+  transition: all 0.4s ease; /* Luxurious, slow transition */
 }
 
-/* It just quietly glows gold on hover */
+/* Fills with color and gently lifts off the page */
 .read-more-link:hover {
-  color: var(--accent-gold);
+  background-color: var(--primary-color);
+  color: var(--bg-card);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(230, 168, 184, 0.25); /* A very soft, dreamy glow */
 }
 
 
