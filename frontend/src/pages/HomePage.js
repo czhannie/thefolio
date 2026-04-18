@@ -147,8 +147,10 @@ function HomePage() {
                 
                 {/* Card Text Content */}
                 <div className="blog-card-content">
+                  
+                  {/* Cleaned up Title Link (Now uses your CSS styling) */}
                   <h3 className="blog-card-title">
-                    <Link to={`/posts/${post._id}`} style={{ color: 'var(--text-main)', textDecoration: 'none' }}>
+                    <Link to={`/posts/${post._id}`}>
                       {post.title}
                     </Link>
                   </h3>
@@ -174,7 +176,7 @@ function HomePage() {
 
       {/* RESTORED EXACT PHASE 1 FOOTER */}
       <footer>
-        <p>&copy; 2026 Maerose Boadilla. All Rights Reserved.</p>
+        <p>&copy; 2026 Maerose Joscel Czarinah Boadilla. All Rights Reserved.</p>
         <p>Contact: student@dmmmsu.edu.ph</p>
       </footer>
     </>
