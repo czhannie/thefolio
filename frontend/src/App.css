@@ -794,39 +794,21 @@ button.replay-btn:hover {
   transform: translateY(-2px);
 }
 
-/* --- ULTRA-ELEGANT READ MORE LINK --- */
+/* --- ELEGANT READ MORE LINK (No Underline) --- */
 .read-more-link {
   color: var(--primary-color);
   font-family: var(--font-heading);
   font-size: 1rem;
-  font-style: italic; /* Gives it a classic, storytelling feel */
+  font-style: italic; 
   letter-spacing: 1.5px;
   text-decoration: none;
   display: inline-block;
   margin-top: auto;
-  position: relative;
-  padding-bottom: 4px;
   transition: color 0.4s ease, transform 0.4s ease;
 }
 
-/* Creates a delicate, barely-there underline */
-.read-more-link::after {
-  content: '';
-  position: absolute;
-  width: 0%;
-  height: 1px;
-  bottom: 0;
-  left: 0;
-  background-color: var(--accent-pop);
-  transition: width 0.4s ease-out; /* Smoothly draws the line on hover */
-}
-
-/* The Hover Effect */
+/* Just the color change and the soft nudge right */
 .read-more-link:hover {
   color: var(--accent-pop);
-  transform: translateX(4px); /* A softer, more refined nudge */
-}
-
-.read-more-link:hover::after {
-  width: 100%; /* Expands the underline perfectly under the text */
+  transform: translateX(4px); 
 }
