@@ -793,3 +793,21 @@ button.replay-btn:hover {
   opacity: 0.9;
   transform: translateY(-2px);
 }
+
+/* --- ELEGANT READ MORE LINK --- */
+.read-more-link {
+  color: var(--primary-color);
+  font-family: var(--font-heading);
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.1rem;
+  display: inline-block;
+  transition: transform 0.3s ease, color 0.3s ease;
+  margin-top: auto; /* Pushes it to the bottom of the card */
+}
+
+/* Adds a smooth little slide-to-the-right effect when hovered */
+.read-more-link:hover {
+  color: var(--accent-pop);
+  transform: translateX(5px); 
+}

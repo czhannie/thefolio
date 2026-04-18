@@ -152,10 +152,10 @@ function HomePage() {
                   By {post.author?.name}
                 </small>
 
-                {/* THE NEW BUTTON */}
-                <Link to={`/posts/${post._id}`} className="btn" style={{ textDecoration: 'none', textAlign: 'center', display: 'block' }}>
-                  Read More
-                </Link>
+               {/* THE ELEGANT TEXT LINK */}
+<Link to={`/posts/${post._id}`} className="read-more-link">
+  Read More &rarr;
+</Link>
                 
               </div>
             ))}
