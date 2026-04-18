@@ -64,7 +64,7 @@ const CreatePostPage = () => {
         
         
           <div>
-            <label htmlFor="image">Upload Cover Image (Admin only): </label>
+            <label htmlFor="image">Upload Cover Image: </label>
             <input 
               type='file' 
               id="image"
